@@ -3,10 +3,11 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
+  const DOMAIN = import.meta.env.VITE_API_SERVER;
   const [count, setCount] = useState(0);
   const getHello = async () => {
     const greet = document.getElementById("greet") as HTMLElement;
-    const res = await (await fetch("http://localhost:4000/api/hello")).json();
+    const res = await (await fetch(`${DOMAIN}/api/hello`)).json();
     greet.innerHTML = JSON.stringify(res);
   };
   useEffect(() => {
